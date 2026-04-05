@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI & TCP/IP Network Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <h1>Network<span class="highlight">Visualizer</span></h1>
+            </div>
+            <div class="controls-top">
+                <div class="toggle-container">
+                    <span class="toggle-label active" id="label-osi">OSI Model (7)</span>
+                    <label class="switch">
+                        <input type="checkbox" id="model-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label" id="label-tcp">TCP/IP Model (4)</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="simulation-area">
+                <div class="stack-container" id="sender-stack-wrapper">
+                    <h2 class="stack-title">Sender</h2>
+                    <div class="stack" id="sender-stack">
+                        <!-- Layers injected via JS -->
+                    </div>
+                </div>
+
+                <div class="payload-display" id="payload-container">
+                    <!-- The animated packet goes here -->
+                    <div class="packet" id="animated-packet" style="display: none;">
+                        <div class="packet-headers" id="packet-headers"></div>
+                        <div class="packet-data">DATA</div>
+                    </div>
+                </div>
+                
+                <div class="center-stage">
+                    <div class="network-wire-container">
+                        <div class="network-wire">
+                            <div class="data-particles" id="particles"></div>
+                        </div>
+                        <span class="wire-label">Physical Medium</span>
+                    </div>
+                </div>
+
+                <div class="stack-container" id="receiver-stack-wrapper">
+                    <h2 class="stack-title">Receiver</h2>
+                    <div class="stack" id="receiver-stack">
+                        <!-- Layers injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="controls-bottom">
+            <button class="btn primary" id="btn-start">Send Message</button>
+            <button class="btn secondary" id="btn-step" disabled>Next Step</button>
+            <button class="btn outline" id="btn-reset">Reset</button>
+            <div class="status-text" id="status-text">Ready to transmit</div>
+        </section>
+
+        <aside class="info-panel" id="info-panel">
+            <div class="panel-placeholder" id="panel-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <p>Click on any layer or progress the simulation to learn more.</p>
+            </div>
+            <div class="panel-content hidden" id="panel-content">
+                <div class="layer-badge" id="info-layer-num">L7</div>
+                <h3 id="info-layer-name">Application Layer</h3>
+                
+                <div class="info-section">
+                    <h4>Description</h4>
+                    <p id="info-desc">Provides network services directly to applications.</p>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h4>PDU (Data Unit)</h4>
+                        <div class="code-badge" id="info-pdu">Data</div>
+                    </div>
+                    <div class="info-box">
+                        <h4>Action</h4>
+                        <div class="tag" id="info-action">Encapsulation</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>Common Protocols</h4>
+                    <div class="protocol-list" id="info-protocols">
+                        <span>HTTP</span><span>FTP</span><span>DNS</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
