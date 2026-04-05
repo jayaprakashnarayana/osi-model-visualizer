@@ -1,6 +1,10 @@
 # OSI & TCP/IP Model Visualizer
 
+![Initial View of Visualizer](assets/initial_view.png)
+
 A premium, interactive web application to help visualize and understand the OSI and TCP/IP networking models. This visualizer demonstrates how data passes through each layer (encapsulation and decapsulation) when a message is sent over a network.
+
+![Visualizer in Action](assets/in_action.png)
 
 ## Features
 
